@@ -3,8 +3,6 @@ import hashlib
 
 directory = "./image/*"
 files = glob.glob(directory)
-print(files)
-
 
 def get_file_hash(filename):
     with open(filename, 'rb') as f:
@@ -30,6 +28,10 @@ def find_duplicates(files):
 # print(get_file_hash(x))
 # print(get_file_hash("./image/oak.jpeg"))
 
-print(f"duplicates:{find_duplicates(files)}")
+duplicates = find_duplicates(files)
+print(f"In folder {directory}, this script has found {len(duplicates)} duplicates.")
+if len(duplicates)>0:
+    print("Paths of those are:")
+    for x in duplicates:
+        print(x)
 
-print("hello world")
